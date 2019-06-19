@@ -6336,7 +6336,7 @@ namespace dlib
                 if (itr->second == OBJECT_PART_NOT_PRESENT)
                     continue;
 
-                const long part_size = (long)std::max(1.0,std::round(std::sqrt(orect.area())/part_width));
+                const long part_size = (long)std::max(1.0,round(std::sqrt(orect.area())/part_width));
                 rectangle temp = centered_rect(get_rect_on_screen(centered_rect(itr->second,1,1)), part_size, part_size);
 
                 if (rect_is_selected && selected_rect == i && 
@@ -6660,7 +6660,7 @@ namespace dlib
                     if (itr->second == OBJECT_PART_NOT_PRESENT)
                         continue;
 
-                    const long part_size = (long)std::max(1.0,std::round(std::sqrt(orect.area())/part_width));
+                    const long part_size = (long)std::max(1.0,round(std::sqrt(orect.area())/part_width));
                     rectangle temp = centered_rect(get_rect_on_screen(centered_rect(itr->second,1,1)), part_size, part_size);
                     point c = center(temp);
 
@@ -6808,7 +6808,7 @@ namespace dlib
                     if (itr->second == OBJECT_PART_NOT_PRESENT)
                         continue;
 
-                    const long part_size = (long)std::max(1.0,std::round(std::sqrt(orect.area())/part_width));
+                    const long part_size = (long)std::max(1.0,round(std::sqrt(orect.area())/part_width));
                     rectangle temp = centered_rect(get_rect_on_screen(centered_rect(itr->second,1,1)), part_size, part_size);
                     point c = center(temp);
 

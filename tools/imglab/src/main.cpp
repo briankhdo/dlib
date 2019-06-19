@@ -147,7 +147,7 @@ int make_train_test_splits (
     data_test.name = data.name;
     data_test.comment = data.comment;
 
-    const unsigned long num_train_images = static_cast<unsigned long>(std::round(train_frac*data.images.size()));
+    const unsigned long num_train_images = static_cast<unsigned long>(round(train_frac*data.images.size()));
 
     for (unsigned long i = 0; i < data.images.size(); ++i)
     {
@@ -387,7 +387,7 @@ int resample_dataset(const command_line_parser& parser)
     locally_change_current_dir chdir(get_parent_directory(file(parser[0])));
     dlib::rand rnd;
 
-    const size_t image_size = std::round(std::sqrt(obj_size*margin_scale*margin_scale));
+    const size_t image_size = round(std::sqrt(obj_size*margin_scale*margin_scale));
     const chip_dims cdims(image_size, image_size);
 
     console_progress_indicator pbar(data.images.size());

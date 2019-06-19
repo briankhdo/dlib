@@ -432,8 +432,8 @@ namespace dlib
         ensures
             - Resizes img so that each of it's dimensions are size_scale times larger than img.
               In particular, we will have:
-                - #img.nr() == std::round(size_scale*img.nr())
-                - #img.nc() == std::round(size_scale*img.nc())
+                - #img.nr() == round(size_scale*img.nr())
+                - #img.nc() == round(size_scale*img.nc())
                 - #img == a bilinearly interpolated copy of the input image.
     !*/
 

@@ -300,7 +300,7 @@ namespace dlib
             matrix<unsigned char> hit(img.nr(), img.nc());
             // initially nothing has been hit.
             hit = 0;
-            const unsigned long win_size = std::round(2*non_max_suppression_radius);
+            const unsigned long win_size = round(2*non_max_suppression_radius);
             const rectangle area = get_rect(img);
             for (auto& pp : peaks)
             {

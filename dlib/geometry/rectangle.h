@@ -16,6 +16,21 @@ namespace dlib
 
 // ----------------------------------------------------------------------------------------
     
+    inline float round(float toRound)
+    {
+      return std::ceil(toRound - 0.5);
+    }
+
+    inline double round(double toRound)
+    {
+      return std::ceil(toRound - 0.5);
+    }
+
+    inline long double round(long double toRound)
+    {
+      return std::ceil(toRound - 0.5);
+    }
+
     class rectangle
     {
         /*!
@@ -650,10 +665,10 @@ namespace dlib
     {
         DLIB_ASSERT(scale > 0, "scale factor must be > 0");
 
-        long l = (long)std::round(rect.left()*scale);
-        long t = (long)std::round(rect.top()*scale);
-        long r = (long)std::round(rect.right()*scale);
-        long b = (long)std::round(rect.bottom()*scale);
+        long l = (long)round(rect.left()*scale);
+        long t = (long)round(rect.top()*scale);
+        long r = (long)round(rect.right()*scale);
+        long b = (long)round(rect.bottom()*scale);
         return rectangle(l, t, r, b);
     }
 
@@ -759,13 +774,13 @@ namespace dlib
         {
             // In this case we will make the output rectangle a square with the requested
             // area.
-            unsigned long scale = std::round(std::sqrt(area));
+            unsigned long scale = round(std::sqrt(area));
             return centered_rect(rect, scale, scale);
         }
         else
         {
             double scale = std::sqrt(area/(double)rect.area());
-            return centered_rect(rect, (long)std::round(rect.width()*scale), (long)std::round(rect.height()*scale));
+            return centered_rect(rect, (long)round(rect.width()*scale), (long)round(rect.height()*scale));
         }
     }
 

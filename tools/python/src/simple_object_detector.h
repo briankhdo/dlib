@@ -188,7 +188,7 @@ namespace dlib
         trainer.set_num_threads(options.num_threads);  
         trainer.set_c(options.C);
         trainer.set_epsilon(options.epsilon);
-        trainer.set_max_runtime(std::chrono::milliseconds((int64_t)std::round(options.max_runtime_seconds*1000)));
+        trainer.set_max_runtime(std::chrono::milliseconds((int64_t)round(options.max_runtime_seconds*1000)));
         if (options.be_verbose)
         {
             std::cout << "Training with C: " << options.C << std::endl;

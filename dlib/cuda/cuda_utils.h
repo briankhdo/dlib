@@ -236,7 +236,7 @@ namespace dlib
                 // on the respective size of our loops.
                 int x_threads = 32;
                 int y_threads = num_threads/32;
-                const int ratio = static_cast<int>(std::round(put_in_range(1, y_threads, m.num_x/(double)m.num_y)));
+                const int ratio = static_cast<int>(round(put_in_range(1, y_threads, m.num_x/(double)m.num_y)));
                 x_threads *= ratio;
                 y_threads /= ratio;
 

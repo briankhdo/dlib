@@ -304,7 +304,7 @@ namespace dlib
             {
                 temp(i) = rnd.get_double_in_range(lower(i), upper(i));
                 if (is_integer_variable[i])
-                    temp(i) = std::round(temp(i));
+                    temp(i) = round(temp(i));
             }
             return temp;
         }
@@ -405,9 +405,9 @@ namespace dlib
         {
             if (is_integer_variable[i])
             {
-                DLIB_CASSERT(std::round(lower(i)) == lower(i), "If you say a variable is an integer variable then it must have an integer lower bound. \n"
+                DLIB_CASSERT(round(lower(i)) == lower(i), "If you say a variable is an integer variable then it must have an integer lower bound. \n"
                     << "lower[i] = " << lower(i));
-                DLIB_CASSERT(std::round(upper(i)) == upper(i), "If you say a variable is an integer variable then it must have an integer upper bound. \n"
+                DLIB_CASSERT(round(upper(i)) == upper(i), "If you say a variable is an integer variable then it must have an integer upper bound. \n"
                     << "upper[i] = " << upper(i));
             }
         }
@@ -723,7 +723,7 @@ namespace dlib
                 for (long i = 0; i < new_req.x.size(); ++i)
                 {
                     if (info->spec.is_integer_variable[i])
-                        new_req.x(i) = std::round(new_req.x(i));
+                        new_req.x(i) = round(new_req.x(i));
                 }
                 info->outstanding_evals.emplace_back(new_req);
                 return function_evaluation_request(new_req,info);

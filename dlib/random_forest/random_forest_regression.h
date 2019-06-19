@@ -378,7 +378,7 @@ namespace dlib
 
             const double sumy = sum(mat(y));
 
-            const size_t feats_per_node = std::max(1.0,std::round(fe.max_num_feats()*feature_subsampling_frac));
+            const size_t feats_per_node = std::max(1.0,round(fe.max_num_feats()*feature_subsampling_frac));
 
             // Each tree couldn't have more than this many interior nodes.  It might
             // end up having less though. We need to know this value because the way

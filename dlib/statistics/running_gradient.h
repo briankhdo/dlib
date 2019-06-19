@@ -233,7 +233,7 @@ namespace dlib
 
         DLIB_CASSERT(container.size() > 0);
 
-        size_t idx_upper = std::round((container.size()-1)*(1-quantile));
+        size_t idx_upper = round((container.size()-1)*(1-quantile));
 
         std::nth_element(container.begin(), container.begin()+idx_upper, container.end());
         auto upper_q = *(container.begin()+idx_upper);
