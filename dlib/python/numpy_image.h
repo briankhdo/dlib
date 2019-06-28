@@ -59,20 +59,20 @@ namespace dlib
         if (expected_channels == 1)
         {
             if (!(img.ndim() == 2 || (img.ndim()==3&&img.shape(2)==1)))
-                throw dlib::error("Expected a 2D numpy array, but instead got one with " + std::to_string(img.ndim()) + " dimensions.");
+                throw dlib::error("Expected a 2D numpy array, but instead got one with " + to_string(img.ndim()) + " dimensions.");
         }
         else
         {
             if (img.ndim() != 3)
             {
-                throw dlib::error("Expected a numpy array with 3 dimensions, but instead got one with " + std::to_string(img.ndim()) + " dimensions.");
+                throw dlib::error("Expected a numpy array with 3 dimensions, but instead got one with " + to_string(img.ndim()) + " dimensions.");
             }
             else if (img.shape(2) != expected_channels)
             {
                 if (pixel_traits<pixel_type>::rgb)
-                    throw dlib::error("Expected a RGB image with " + std::to_string(expected_channels) + " channels but got an image with " + std::to_string(img.shape(2)) + " channels.");
+                    throw dlib::error("Expected a RGB image with " + to_string(expected_channels) + " channels but got an image with " + to_string(img.shape(2)) + " channels.");
                 else
-                    throw dlib::error("Expected an image with " + std::to_string(expected_channels) + " channels but got an image with " + std::to_string(img.shape(2)) + " channels.");
+                    throw dlib::error("Expected an image with " + to_string(expected_channels) + " channels but got an image with " + to_string(img.shape(2)) + " channels.");
             }
         }
     }
@@ -326,9 +326,9 @@ namespace dlib
         assert_correct_num_channels_in_image<pixel_type>(img);
         using basic_pixel_type = typename pixel_traits<pixel_type>::basic_pixel_type;
         if (img.ndim()==3 && img.strides(2) != sizeof(basic_pixel_type))
-            throw dlib::error("The stride of the 3rd dimension (the channel dimension) of the numpy array must be " + std::to_string(sizeof(basic_pixel_type)));
+            throw dlib::error("The stride of the 3rd dimension (the channel dimension) of the numpy array must be " + to_string(sizeof(basic_pixel_type)));
         if (img.strides(1) != sizeof(pixel_type))
-            throw dlib::error("The stride of the 2nd dimension (the columns dimension) of the numpy array must be " + std::to_string(sizeof(pixel_type)));
+            throw dlib::error("The stride of the 2nd dimension (the columns dimension) of the numpy array must be " + to_string(sizeof(pixel_type)));
 
         return img.strides(0);
     }

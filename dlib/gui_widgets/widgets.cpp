@@ -6577,7 +6577,7 @@ namespace dlib
                     break;
                 ++part_num;
             }
-            std::string part_name = std::to_string(part_num);
+            std::string part_name = to_string(part_num);
             // pad part name so it's the same length as the other parts.
             while (part_name.size() < num_digits_required)
                 part_name = '0' + part_name;

@@ -362,6 +362,11 @@ namespace dlib
             pooling(const pooling&) = delete;
             pooling& operator=(const pooling&) = delete;
 
+            // clang
+            // pooling (
+            // ) = default;
+
+            // C++
             pooling (
             );
 

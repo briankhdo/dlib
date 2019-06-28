@@ -163,6 +163,7 @@
 #include "unicode.h"
 #include "byte_orderer.h"
 #include "float_details.h"
+#include "string.h"
 
 namespace dlib
 {
@@ -1632,7 +1633,7 @@ namespace dlib
                 else 
                 {
                     throw serialization_error("An error occurred while trying to read the " +
-                        std::to_string(objects_read+1) + "th object from the file " + filename +
+                        to_string(objects_read+1) + "th object from the file " + filename +
                         ".\nERROR: " + e.info + "\n" + suffix);
                 }
             }

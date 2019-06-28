@@ -312,7 +312,7 @@ void save_face_chips (
         i++;
         if(num_faces > 1) 
         {
-            const std::string& file_name = chip_filename + "_" + std::to_string(i) + ".jpg";
+            const std::string& file_name = chip_filename + "_" + to_string(i) + ".jpg";
             save_jpeg(chip, file_name);
         }
         else

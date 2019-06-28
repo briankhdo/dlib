@@ -404,7 +404,7 @@ namespace dlib
             // all_trees and all_leaves.
             auto build_tree = [&](long i)
             {
-                dlib::rand rnd(random_seed + std::to_string(i));
+                dlib::rand rnd(random_seed + to_string(i));
                 auto& tree = all_trees[i];
                 auto& leaves = all_leaves[i];
 

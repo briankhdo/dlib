@@ -439,7 +439,7 @@ PYBIND11_NOINLINE inline std::string error_string() {
             int lineno = PyFrame_GetLineNumber(frame);
             errorString +=
                 "  " + handle(frame->f_code->co_filename).cast<std::string>() +
-                "(" + std::to_string(lineno) + "): " +
+                "(" + to_string(lineno) + "): " +
                 handle(frame->f_code->co_name).cast<std::string>() + "\n";
             frame = frame->f_back;
         }
@@ -1936,7 +1936,7 @@ private:
 #if defined(NDEBUG)
             argument_cast_error();
 #else
-            argument_cast_error(std::to_string(args_list.size()), type_id<T>());
+            argument_cast_error(to_string(args_list.size()), type_id<T>());
 #endif
         }
         args_list.append(o);

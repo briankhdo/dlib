@@ -3143,8 +3143,8 @@ namespace dlib
             size_t count_tags;
             deserialize(count_tags, in);
             if (count_tags != tag_count())
-                throw serialization_error("Invalid count of tags "+ std::to_string(count_tags) +", expecting " +
-                                          std::to_string(tag_count()) +
+                throw serialization_error("Invalid count of tags "+ to_string(count_tags) +", expecting " +
+                                          to_string(tag_count()) +
                                                   " found while deserializing dlib::concat_.");
         }
 

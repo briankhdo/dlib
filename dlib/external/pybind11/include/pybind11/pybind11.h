@@ -231,7 +231,7 @@ protected:
                     } else if (arg_index == 0 && rec->is_method) {
                         signature += "self";
                     } else {
-                        signature += "arg" + std::to_string(arg_index - (rec->is_method ? 1 : 0));
+                        signature += "arg" + to_string(arg_index - (rec->is_method ? 1 : 0));
                     }
                     signature += ": ";
                 }
@@ -368,7 +368,7 @@ protected:
             if (options::show_function_signatures()) {
                 if (index > 0) signatures += "\n";
                 if (chain)
-                    signatures += std::to_string(++index) + ". ";
+                    signatures += to_string(++index) + ". ";
                 signatures += rec->name;
                 signatures += it->signature;
                 signatures += "\n";
@@ -712,7 +712,7 @@ protected:
 
             int ctr = 0;
             for (function_record *it2 = overloads; it2 != nullptr; it2 = it2->next) {
-                msg += "    "+ std::to_string(++ctr) + ". ";
+                msg += "    "+ to_string(++ctr) + ". ";
 
                 bool wrote_sig = false;
                 if (overloads->is_constructor) {

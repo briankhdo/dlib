@@ -5,6 +5,7 @@
 
 #include "tensor_tools.h"
 #include "../string.h"
+#include "cpu_dlib.h"
 #include <atomic>
 
 namespace dlib

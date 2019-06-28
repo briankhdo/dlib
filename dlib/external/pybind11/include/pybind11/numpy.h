@@ -693,8 +693,8 @@ public:
      */
     template <typename T, ssize_t Dims = -1> detail::unchecked_mutable_reference<T, Dims> mutable_unchecked() & {
         if (Dims >= 0 && ndim() != Dims)
-            throw std::domain_error("array has incorrect number of dimensions: " + std::to_string(ndim()) +
-                    "; expected " + std::to_string(Dims));
+            throw std::domain_error("array has incorrect number of dimensions: " + to_string(ndim()) +
+                    "; expected " + to_string(Dims));
         return detail::unchecked_mutable_reference<T, Dims>(mutable_data(), shape(), strides(), ndim());
     }
 
@@ -707,8 +707,8 @@ public:
      */
     template <typename T, ssize_t Dims = -1> detail::unchecked_reference<T, Dims> unchecked() const & {
         if (Dims >= 0 && ndim() != Dims)
-            throw std::domain_error("array has incorrect number of dimensions: " + std::to_string(ndim()) +
-                    "; expected " + std::to_string(Dims));
+            throw std::domain_error("array has incorrect number of dimensions: " + to_string(ndim()) +
+                    "; expected " + to_string(Dims));
         return detail::unchecked_reference<T, Dims>(data(), shape(), strides(), ndim());
     }
 
@@ -746,8 +746,8 @@ protected:
     template<typename, typename> friend struct detail::npy_format_descriptor;
 
     void fail_dim_check(ssize_t dim, const std::string& msg) const {
-        throw index_error(msg + ": " + std::to_string(dim) +
-                          " (ndim = " + std::to_string(ndim()) + ")");
+        throw index_error(msg + ": " + to_string(dim) +
+                          " (ndim = " + to_string(ndim()) + ")");
     }
 
     template<typename... Ix> ssize_t byte_offset(Ix... index) const {
@@ -786,9 +786,9 @@ protected:
 
     template<typename... Ix> void check_dimensions_impl(ssize_t axis, const ssize_t* shape, ssize_t i, Ix... index) const {
         if (i >= *shape) {
-            throw index_error(std::string("index ") + std::to_string(i) +
-                              " is out of bounds for axis " + std::to_string(axis) +
-                              " with size " + std::to_string(*shape));
+            throw index_error(std::string("index ") + to_string(i) +
+                              " is out of bounds for axis " + to_string(axis) +
+                              " with size " + to_string(*shape));
         }
         check_dimensions_impl(axis + 1, shape + 1, index...);
     }
@@ -929,10 +929,10 @@ struct format_descriptor<T, detail::enable_if_t<detail::is_pod_struct<T>::value>
 };
 
 template <size_t N> struct format_descriptor<char[N]> {
-    static std::string format() { return std::to_string(N) + "s"; }
+    static std::string format() { return to_string(N) + "s"; }
 };
 template <size_t N> struct format_descriptor<std::array<char, N>> {
-    static std::string format() { return std::to_string(N) + "s"; }
+    static std::string format() { return to_string(N) + "s"; }
 };
 
 template <typename T>
@@ -1015,7 +1015,7 @@ public:
 
 #define PYBIND11_DECL_CHAR_FMT \
     static PYBIND11_DESCR name() { return _("S") + _<N>(); } \
-    static pybind11::dtype dtype() { return pybind11::dtype(std::string("S") + std::to_string(N)); }
+    static pybind11::dtype dtype() { return pybind11::dtype(std::string("S") + to_string(N)); }
 template <size_t N> struct npy_format_descriptor<char[N]> { PYBIND11_DECL_CHAR_FMT };
 template <size_t N> struct npy_format_descriptor<std::array<char, N>> { PYBIND11_DECL_CHAR_FMT };
 #undef PYBIND11_DECL_CHAR_FMT

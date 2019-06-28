@@ -75,7 +75,7 @@ void add_overlay_parts (
     {
         std::vector<image_display::overlay_circle> tmp;
         for (unsigned long i = 0; i < detection.num_parts(); ++i)
-            tmp.emplace_back(detection.part(i), 0.5, color, std::to_string(i));
+            tmp.emplace_back(detection.part(i), 0.5, color, to_string(i));
         win.add_overlay(tmp);
         win.add_overlay(detection.get_rect());
     }

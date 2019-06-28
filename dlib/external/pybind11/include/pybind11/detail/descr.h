@@ -170,7 +170,7 @@ template <typename Type> PYBIND11_NOINLINE descr _() {
 
 template <size_t Size> PYBIND11_NOINLINE descr _() {
     const std::type_info *types[1] = { nullptr };
-    return descr(std::to_string(Size).c_str(), types);
+    return descr(to_string(Size).c_str(), types);
 }
 
 PYBIND11_NOINLINE inline descr concat() { return _(""); }
